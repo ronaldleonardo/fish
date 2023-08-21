@@ -6,7 +6,7 @@ import xgboost as xgb
 import numpy as np
 st.header("Fish Weight Prediction App")
 st.text_input("Enter your Name: ", key="name")
-data = pd.read_csv("https://raw.githubusercontent.com/gurokeretcha/WishWeightPredictionApplication/master/Fish.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/ronaldleonardo/fish/main/Fish.csv")
 #load label encoder
 encoder = LabelEncoder()
 encoder.classes_ = np.load('classes.npy',allow_pickle=True)
@@ -40,9 +40,4 @@ if st.button('Make Prediction'):
     prediction = best_xgboost_model.predict(inputs)
     print("final pred", np.squeeze(prediction, -1))
     st.write(f"Your fish weight is: {np.squeeze(prediction, -1):.2f}g")
-
-    st.write(f"Thank you {st.session_state.name}! I hope you liked it.")
-    st.write(f"If you want to see more advanced applications you can follow me on [medium](https://medium.com/@gkeretchashvili)")
-
-
 
